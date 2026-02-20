@@ -31,6 +31,9 @@ beforeAll(async () => {
   app.post("/", (req, res) => {
     res.json(req.body);
   });
+  app.get("/no-content", (req, res) => {
+    res.status(204).send();
+  });
   app.get("/error", (req, res) => {
     res.status(500).json(FOO_BAR);
   });
@@ -87,6 +90,13 @@ suite("gretchen", () => {
   test("Returns JSON", async () => {
     const res = await gretchen<FooBar>(url, { returnJSON: true });
     expectTypeOf(res).toEqualTypeOf(FOO_BAR);
+  });
+
+  test("Returns undefined with returnJSON and 204", async () => {
+    const res = await gretchen<undefined>(`${url}no-content`, {
+      returnJSON: true,
+    });
+    expectTypeOf(res).toEqualTypeOf(undefined);
   });
 
   test("Sends JSON", async () => {

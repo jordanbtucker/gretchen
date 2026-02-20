@@ -175,9 +175,13 @@ export async function gretchen<T = unknown>(
         response,
       );
     }
-    return returnJSON
-      ? (response.json() as Promise<T>)
-      : (response as GretchenResponse<T>);
+    if (returnJSON) {
+      if (response.status === 204) {
+        return undefined as T;
+      }
+      return response.json() as Promise<T>;
+    }
+    return response as GretchenResponse<T>;
   }
 }
 

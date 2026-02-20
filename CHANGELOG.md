@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog], and this project adheres to [Semantic
 Versioning].
 
+## [Unreleased]
+
+- When the server responds with 204 No Content and returnJSON is enabled,
+  undefined will be returned instead of throwing an error.
+
 ## [1.0.1] - 2026-02-20
 
 - Fixed tsconfig.json so that tsc only emits declaration files since esbuild
