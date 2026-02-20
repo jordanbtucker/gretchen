@@ -1,0 +1,71 @@
+{
+  "name": "@ns84/gretchen",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Makes fetch happen",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs"
+  },
+  "files": [
+    "./dist",
+    "./CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=21.0.0"
+  },
+  "keywords": [
+    "gretchen",
+    "fetch"
+  ],
+  "homepage": "https://github.com/jordanbtucker/gretchen",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jordanbtucker/gretchen"
+  },
+  "bugs": {
+    "url": "https://github.com/jordanbtucker/gretchen/issues"
+  },
+  "author": {
+    "name": "Jordan Tucker",
+    "email": "jordanbtucker@gmail.com",
+    "url": "https://github.com/jordanbtucker"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.0",
+    "@vitest/coverage-v8": "^4.0.18",
+    "chalk": "^5.6.2",
+    "esbuild": "^0.27.3",
+    "express": "^5.2.1",
+    "prettier": "^3.8.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  },
+  "scripts": {
+    "build": "npm run build:types && npm run build:mjs && npm run build:cjs",
+    "build:types": "tsc",
+    "build:mjs": "esbuild --bundle --format=esm --platform=node --target=node21.0.0 --outfile=./dist/index.mjs --sourcemap ./src/index.ts",
+    "build:cjs": "esbuild --bundle --format=cjs --platform=node --target=node21.0.0 --outfile=./dist/index.cjs --sourcemap ./src/index.ts",
+    "tsc:check": "tsc --noEmit",
+    "prettier:check": "prettier -c --log-level=warn .",
+    "prettier:write": "prettier -w --log-level=warn .",
+    "lint": "npm run tsc:check && npm run prettier:check",
+    "format": "npm run prettier:write",
+    "test": "vitest run --coverage --coverage.include=src --coverage.thresholds.100",
+    "test:watch": "vitest --coverage --coverage.include=src --coverage.thresholds.100",
+    "bump": "tsx ./scripts/bump.ts",
+    "preversion": "git stash apply && npm run lint && npm test",
+    "version": "git add ./CHANGELOG.md && npm run build",
+    "prepublishOnly": "npm run lint && npm run build"
+  }
+}
