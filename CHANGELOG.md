@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog], and this project adheres to [Semantic
 Versioning].
 
+## [Unreleased]
+
+- Fixed tsconfig.json so that tsc only emits declaration files since esbuild
+  handles transpiling.
+
 ## [1.0.0] - 2026-02-19
 
 - Added an option to return parsed JSON instead of a Response object.
