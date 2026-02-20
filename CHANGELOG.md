@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog], and this project adheres to [Semantic
 Versioning].
 
-## [Unreleased]
+## [1.1.0] - 2026-02-20
 
 - When the server responds with 204 No Content and returnJSON is enabled,
   undefined will be returned instead of throwing an error.
@@ -32,3 +32,4 @@ Versioning].
 [Unreleased]: https://github.com/jordanbtucker/gretchen/commits/main/
 [1.0.0]: https://github.com/jordanbtucker/gretchen/releases/tag/v1.0.0
 [1.0.1]: https://github.com/jordanbtucker/gretchen/releases/tag/v1.0.1
+[1.1.0]: https://github.com/jordanbtucker/gretchen/releases/tag/v1.1.0
