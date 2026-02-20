@@ -1,6 +1,6 @@
 {
   "name": "@ns84/gretchen",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "Makes fetch happen",
   "main": "./dist/index.cjs",
